@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Simple Clicker</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css"><!--Internal stylesheet-->
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+        <!--Logo/Name of site-->
+      <a class="navbar-brand" href="index.html">Your Website</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Container (About Section) -->
+<div id="about" class="container text-center">
+  <h3>Units</h3>
+    <p class="leftalign" id="a">A</p>
+    <p class="leftalign" id="b">B</p>
+    <p class="leftalign" id="c">C</p>
+    <p class="leftalign" id="d">D</p>
+    <p class="leftalign" id="e">E</p>
+  <br>
+    <!--Beginning profile images
+        Each one corresponds to a unit. Clicking it gains said unit-->
+  <div class="row slideanim">
+      <!--First profile image-->
+    <div class="col-sm-4" onclick="geta()">
+        <!--Name/title-->
+      <p class="text-center"><strong>A</strong></p><br>
+      <p class="text-center">One per click</p><br>
+        <!--Image-->
+      <a href="#demo" data-toggle="collapse">
+        <img src="https://picsum.photos/255/255" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+    </div>
+      <!--Second profile image-->
+    <div class="col-sm-4" onclick="getb()">
+        <!--Name/title-->
+      <p class="text-center"><strong>B</strong></p><br>
+      <p class="text-center">One per 10 A</p><br>
+        <!--Image-->
+      <a href="#demo2" data-toggle="collapse">
+        <img src="https://picsum.photos/255/255" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+    </div>
+      <!--Third profile image-->
+    <div class="col-sm-4" onclick="getc()">
+        <!--Name/title-->
+      <p class="text-center"><strong>C</strong></p><br>
+      <p class="text-center">One per 100 B</p><br>
+        <!--Image-->
+      <a href="#demo3" data-toggle="collapse">
+        <img src="https://picsum.photos/255/255" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+    </div>
+      <!--Fourth-->
+      <div class="col-sm-4" onclick="getd()">
+        <!--Name/title-->
+      <p class="text-center"><strong>D</strong></p><br>
+      <p class="text-center">One per 100 C</p><br>
+        <!--Image-->
+      <a href="#demo3" data-toggle="collapse">
+        <img src="https://picsum.photos/255/255" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+    </div>
+      <!--Fifth-->
+      <div class="col-sm-4" onclick="gete()">
+        <!--Name/title-->
+      <p class="text-center"><strong>E</strong></p><br>
+      <p class="text-center">One per 100 D</p><br>
+        <!--Image-->
+      <a href="#demo3" data-toggle="collapse">
+        <img src="https://picsum.photos/255/255" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer class="text-center">
+    <!--Go to top of page item-->
+  <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a><br><br>
+    <!--Begin footer items-->
+    <hr>
+        <!--Section for copyright-->
+        <p>cfreidsy</p> 
+    <br>
+</footer>
+
+<script>
+$(document).ready(function(){
+  // Initialize Tooltip
+  $('[data-toggle="tooltip"]').tooltip(); 
+  
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+})
+</script>
+<script>
+$(window).scroll(function() {
+  $(".slideanim").each(function(){
+    var pos = $(this).offset().top;
+
+    var winTop = $(window).scrollTop();
+    if (pos < winTop + 600) {
+      $(this).addClass("slide");
+    }
+  });
+});
+</script>
+<script>
+    //variables for each unit
+    var a = 0;
+    var b = 0;
+    var c = 0;
+    var d = 0;
+    var e = 0;
+    
+    //each second
+window.setInterval(function(){
+    //set each unit
+    document.getElementById('a').innerHTML = ("A " + a);
+    document.getElementById('b').innerHTML = ("B " + b);
+    document.getElementById('c').innerHTML = ("C " + c);
+    document.getElementById('d').innerHTML = ("D " + d);
+    document.getElementById('e').innerHTML = ("E " + e);
+    
+    //add something a little interesting. Each unit will compound. 
+    //A does nothing
+    //B gives .5 A
+    //C gives .25 B
+    //D gives .10 C
+    //E gives .05 D
+    
+    a = a + (b*0.5);
+    b = b + (c*0.25);
+    c = c + (d*.10);
+    d = d + (e*0.05);
+}, 1000);
+    //functions for the units
+    //a is one more for each click
+    function geta() {
+        a = a+1;
+        document.getElementById('a').innerHTML = ("A " + a);
+    }
+    //b is one for 10 a
+    function getb() {
+        if (a >= 10){
+            b = b + 1;
+            a = a - 10;
+            document.getElementById('b').innerHTML = ("B " + b);
+        }
+    }
+    //c is one for 100 b
+    function getc() {
+        if (b >= 100) {
+            c = c + 1;
+            b = b - 100;
+            document.getElementById('c').innerHTML = ("C " + c);
+        }
+    }
+    //d is one for 100 c
+    function getd() {
+        if (c >= 100) {
+            d = d + 1;
+            c = c - 100;
+            document.getElementById('d').innerHTML = ("D " + d);
+        }
+    }
+    //e is one for 100 d
+    function gete() {
+        if (d >= 100) {
+            e = e + 1;
+            d = d - 100;
+            document.getElementById('e').innerHTML = ("E " + e);
+        }
+    }
+</script>
+</body>
+</html>
