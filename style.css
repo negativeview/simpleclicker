@@ -158,7 +158,7 @@
   textarea {
       resize: none;
   }
-  .slideanim {visibility:hidden;}
+  .slideanim {visibility:visible;}
 .slide {
     /* The name of the animation */
     animation-name: slide;
