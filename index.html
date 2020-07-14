@@ -54,7 +54,7 @@
       <br />
       <!--Beginning profile images
         Each one corresponds to a unit. Clicking it gains said unit-->
-      <div class="row slideanim">
+      <div class="row">
         <!--First profile image-->
         <div class="col-sm-4" onclick="geta()">
           <!--Name/title-->
@@ -188,18 +188,6 @@
               }
             );
           } // End if
-        });
-      });
-    </script>
-    <script>
-      $(window).scroll(function () {
-        $(".slideanim").each(function () {
-          var pos = $(this).offset().top;
-
-          var winTop = $(window).scrollTop();
-          if (pos < winTop + 600) {
-            $(this).addClass("slide");
-          }
         });
       });
     </script>
