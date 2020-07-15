@@ -218,11 +218,11 @@
       }, 1000);
 
       function showUpdate() {
-        document.getElementById("a").innerHTML = "A " + a;
-        document.getElementById("b").innerHTML = "B " + b;
-        document.getElementById("c").innerHTML = "C " + c;
-        document.getElementById("d").innerHTML = "D " + d;
-        document.getElementById("e").innerHTML = "E " + e;
+        document.getElementById("a").innerHTML = "A " + parseFloat(a.toFixed(3));
+        document.getElementById("b").innerHTML = "B " + parseFloat(b.toFixed(3));
+        document.getElementById("c").innerHTML = "C " + parseFloat(c.toFixed(3));
+        document.getElementById("d").innerHTML = "D " + parseFloat(d.toFixed(3));
+        document.getElementById("e").innerHTML = "E " + parseFloat(e.toFixed(3));
       }
       //functions for the units
       //a is one more for each click
