@@ -199,23 +199,46 @@
       var d = 0;
       var e = 0;
 
-      //each second
-      window.setInterval(function () {
-        //set each unit
-        showUpdate();
+      $(document).ready(function () {
+        let units = window.localStorage.getItem('units');
+        if (units != null) {
+          units = JSON.parse(units);
 
-        //add something a little interesting. Each unit will compound.
-        //A does nothing
-        //B gives .5 A
-        //C gives .25 B
-        //D gives .10 C
-        //E gives .05 D
+          a = units['a'];
+          b = units['b'];
+          c = units['c'];
+          d = units['d'];
+        }
 
-        a = a + b * 0.5;
-        b = b + c * 0.25;
-        c = c + d * 0.1;
-        d = d + e * 0.05;
-      }, 1000);
+        //each second
+        window.setInterval(function () {
+          //set each unit
+          showUpdate();
+
+          //add something a little interesting. Each unit will compound.
+          //A does nothing
+          //B gives .5 A
+          //C gives .25 B
+          //D gives .10 C
+          //E gives .05 D
+
+          a = a + b * 0.5;
+          b = b + c * 0.25;
+          c = c + d * 0.1;
+          d = d + e * 0.05;
+
+          window.localStorage.setItem(
+            'units', JSON.stringify(
+              {
+                'a': a,
+                'b': b,
+                'c': c,
+                'd': d
+              }
+            )
+          );
+        }, 1000);
+      });
 
       function showUpdate() {
         document.getElementById("a").innerHTML = "A " + a;
