@@ -100,6 +100,8 @@
         var d = 0;
         var e = 0;
         
+        showUpdate();
+        
         $(document).ready(function() {
             let units = window.localStorage.getItem('units');
             if (units != null) {
@@ -122,11 +124,15 @@
                 //C gives .25 B
                 //D gives .10 C
                 //E gives .05 D
+                @@ -215,6 +216,9 @@ <h3>Units</h3>
 
                 a = a + b * 0.5;
                 b = b + c * 0.25;
                 c = c + d * 0.1;
                 d = d + e * 0.05;
+                
+                //set each unit
+                showUpdate();
 
                 window.localStorage.setItem(
                     'units', JSON.stringify({
