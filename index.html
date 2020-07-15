@@ -93,104 +93,101 @@
     </footer>
 
     <script>
-        //variables for each unit
-        var a = 0;
-        var b = 0;
-        var c = 0;
-        var d = 0;
-        var e = 0;
-        
+       //variables for each unit
+      var a = 0;
+      var b = 0;
+      var c = 0;
+      var d = 0;
+      var e = 0;
+
+      $(document).ready(function () {
+        let units = window.localStorage.getItem('units');
+        if (units != null) {
+          units = JSON.parse(units);
+
+          a = units['a'];
+          b = units['b'];
+          c = units['c'];
+          d = units['d'];
+        }
+
+          showUpdate();
+        //each second
+        window.setInterval(function () {
+          //set each unit
+          showUpdate();
+
+          //add something a little interesting. Each unit will compound.
+          //A does nothing
+          //B gives .5 A
+          //C gives .25 B
+          //D gives .10 C
+          //E gives .05 D
+
+          a = a + b * 0.5;
+          b = b + c * 0.25;
+          c = c + d * 0.1;
+          d = d + e * 0.05;
+            
+            getUpdate();
+          window.localStorage.setItem(
+            'units', JSON.stringify(
+              {
+                'a': a,
+                'b': b,
+                'c': c,
+                'd': d
+              }
+            )
+          );
+        }, 1000);
+      });
+
+      function showUpdate() {
+        document.getElementById("a").innerHTML = "A " + a;
+        document.getElementById("b").innerHTML = "B " + b;
+        document.getElementById("c").innerHTML = "C " + c;
+        document.getElementById("d").innerHTML = "D " + d;
+        document.getElementById("e").innerHTML = "E " + e;
+      }
+      //functions for the units
+      //a is one more for each click
+      function geta() {
+        a = a + 1;
         showUpdate();
-        
-        $(document).ready(function() {
-            let units = window.localStorage.getItem('units');
-            if (units != null) {
-                units = JSON.parse(units);
-
-                a = units['a'];
-                b = units['b'];
-                c = units['c'];
-                d = units['d'];
-            }
-
-            //each second
-            window.setInterval(function() {
-                //set each unit
-                showUpdate();
-
-                //add something a little interesting. Each unit will compound.
-                //A does nothing
-                //B gives .5 A
-                //C gives .25 B
-                //D gives .10 C
-                //E gives .05 D
-                
-
-                a = a + b * 1;
-                b = b + c * 0.5;
-                c = c + d * 0.25;
-                d = d + e * 0.2;
-                
-                //set each unit
-                showUpdate();
-
-                window.localStorage.setItem(
-                    'units', JSON.stringify({
-                        'a': a,
-                        'b': b,
-                        'c': c,
-                        'd': d
-                    })
-                );
-            }, 1000);
-        });
-
-        function showUpdate() {
-            document.getElementById("a").innerHTML = "A " + parseFloat(a.toFixed(3));
-            document.getElementById("b").innerHTML = "B " + parseFloat(b.toFixed(3));
-            document.getElementById("c").innerHTML = "C " + parseFloat(c.toFixed(3));
-            document.getElementById("d").innerHTML = "D " + parseFloat(d.toFixed(3));
-            document.getElementById("e").innerHTML = "E " + parseFloat(e.toFixed(3));
+      }
+      //b is one for 10 a
+      function getb() {
+        if (a >= 10) {
+          b = b + 1;
+          a = a - 10;
+          showUpdate();
         }
-        //functions for the units
-        //a is one more for each click
-        function geta() {
-            a = a + 1;
-            showUpdate();
+      }
+      //c is one for 100 b
+      function getc() {
+        if (b >= 100) {
+          c = c + 1;
+          b = b - 100;
+          showUpdate();
         }
-        //b is one for 10 a
-        function getb() {
-            if (a >= 10) {
-                b = b + 1;
-                a = a - 10;
-                showUpdate();
-            }
+      }
+      //d is one for 100 c
+      function getd() {
+        if (c >= 100) {
+          d = d + 1;
+          c = c - 100;
+          showUpdate();
         }
-        //c is one for 100 b
-        function getc() {
-            if (b >= 100) {
-                c = c + 1;
-                b = b - 25;
-                showUpdate();
-            }
+      }
+      //e is one for 100 d
+      function gete() {
+        if (d >= 100) {
+          e = e + 1;
+          d = d - 100;
+          showUpdate();
         }
-        //d is one for 100 c
-        function getd() {
-            if (c >= 100) {
-                d = d + 1;
-                c = c - 50;
-                showUpdate();
-            }
-        }
-        //e is one for 100 d
-        function gete() {
-            if (d >= 100) {
-                e = e + 1;
-                d = d - 100;
-                showUpdate();
-            }
-        }
-
+      }
     </script>
 </body>
 
