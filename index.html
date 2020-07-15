@@ -19,7 +19,7 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <!--Logo/Name of site-->
-                <a class="navbar-brand" href="index.html">Your Website</a>
+                <a class="navbar-brand" href="index.html">Simple Clicker</a>
             </div>
         </div>
     </nav>
@@ -60,7 +60,7 @@
                 <!--Name/title-->
                 <p class="text-center"><strong>C</strong></p>
                 <br />
-                <p class="text-center">One per 100 B</p>
+                <p class="text-center">One per 25 B</p>
                 <br />
                 <!--Image-->
                 <img src="https://picsum.photos/255/255" class="img-circle person" alt="Random Name" width="255" height="255" />
@@ -70,7 +70,7 @@
                 <!--Name/title-->
                 <p class="text-center"><strong>D</strong></p>
                 <br />
-                <p class="text-center">One per 100 C</p>
+                <p class="text-center">One per 50 C</p>
                 <br />
                 <!--Image-->
                 <img src="https://picsum.photos/255/255" class="img-circle person" alt="Random Name" width="255" height="255" />
@@ -170,7 +170,7 @@
         function getc() {
             if (b >= 100) {
                 c = c + 1;
-                b = b - 100;
+                b = b - 25;
                 showUpdate();
             }
         }
@@ -178,7 +178,7 @@
         function getd() {
             if (c >= 100) {
                 d = d + 1;
-                c = c - 100;
+                c = c - 50;
                 showUpdate();
             }
         }
