@@ -188,3 +188,8 @@ textarea {
 .search {
   margin: 10px;
 }
+
+
+.unit {
+  cursor: pointer;
+}
