@@ -192,18 +192,19 @@
       });
     </script>
     <script>
-      //variables for each unit
+      // variables for each unit
+      // set initial values
       var a = 0;
       var b = 0;
       var c = 0;
       var d = 0;
       var e = 0;
 
+      //show initial unit values
+      showUpdate();
+
       //each second
       window.setInterval(function () {
-        //set each unit
-        showUpdate();
-
         //add something a little interesting. Each unit will compound.
         //A does nothing
         //B gives .5 A
@@ -215,6 +216,9 @@
         b = b + c * 0.25;
         c = c + d * 0.1;
         d = d + e * 0.05;
+
+        //set each unit
+        showUpdate();
       }, 1000);
 
       function showUpdate() {
